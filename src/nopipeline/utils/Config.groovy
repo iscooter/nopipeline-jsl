@@ -15,8 +15,6 @@ class Config implements Serializable {
     /**
     * Used to initialize this Class
     *
-    * @param roleArn [required] - The Amazon Resource Name (ARN) of the role to assume.  This role must be allowed by policy for the jenkins host you're on.
-    * @param sessionName [required] - The --role-session-name is an identifier for the assumed role session.
     * @param workPath - The working directory used by this integration library.
     * @param basePath - This defines the top level directory name used for resources; artifacts, dockerfiles, policies, bin, documents and src.
     * @returns [String] response - the output from running the shell script
