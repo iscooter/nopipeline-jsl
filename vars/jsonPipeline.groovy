@@ -1,4 +1,13 @@
 def call(Map args) {
+    // include json library
+    json = library(
+        identifier: "json@master",
+        retriever: modernSCM([
+            $class: 'GitSCMSource',
+            remote: 'https://github.com/iscooter/nopipeline-json.git'
+        ])
+    )
+
     // startup class integrations: jenkins shared library
     jsl = args.library.nopipeline.Integration.new(this)
 
