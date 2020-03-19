@@ -1,0 +1,12 @@
+{
+    "DockerContainer": "amazonlinux",
+    "Pipeline": {
+        "Stage1": {
+            "State": "Enabled",
+            "LogLevel": "INFO",
+            "Payload": {
+                "arg1": "hello-world"
+            }
+        }
+    }
+}
