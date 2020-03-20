@@ -24,6 +24,9 @@ def call(Map args) {
             stage("Initialize") {
                 steps {
                     script {
+                        // Clean the workspace
+                        cleanWs()
+
                         // initialize gitops shared library integration
                         jsl.init(jsonPipeline: args.json)
 
