@@ -13,7 +13,7 @@ def call(Map args) {
 
     pipeline {
 
-        agent any
+        agent { node { label 'ubuntu' } }
 
         options {
             timeout(time: 60, unit: 'MINUTES')

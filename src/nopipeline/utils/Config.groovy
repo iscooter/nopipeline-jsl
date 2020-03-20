@@ -56,6 +56,37 @@ class Config implements Serializable {
     }
 
     /**
+    * Due to the way jenkins interpolates strings in single, double and triple quoted objects, we need to have a way
+    * to escape interal quotes too.  Primarly done to preserve JSON data structure throughout integration from JSON -> JSL -> Docker -> Python.
+    *
+    * @param data - The string object with quotes to escape
+    * @returns [String] - The args.data with double quotes escaped by one backslash
+    *
+    */
+    public String escapeQuotes(Map args) {
+        def response
+
+        if (args != null) {
+            if (args.data != null) {
+                if (args.quote != null) {
+                    if (args.quote == "single") {
+                        response = args.data.toString().replaceAll("'", "\'")
+                    }
+                    if (args.quote == "double") {
+                        if (args.depth != null) {
+                            response = args.data.toString().replaceAll('"', '\\\\\\"')
+                        } else {
+                            response = args.data.toString().replaceAll('"', '\"')
+                        }
+                        
+                    }
+                }
+            }
+        }
+        return response
+    }
+
+    /**
     * Parse JSON configuration file and return the value for the name element. The name (or key) must exist in the json data structure.
     *
     * @param configFile - The name of the json file under basePath/basePathConfig.
